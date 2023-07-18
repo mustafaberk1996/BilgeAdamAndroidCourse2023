@@ -8,6 +8,8 @@ fun main() {
     val universe = "Bilge Adam"
     val computerCount = 1234
 
+    println("${user.calculate("t")}")
+
     //Boolean, Float, Double, Char, Short, Int, String,Array, List, MutableList
     val isActive = true
     val active = false
