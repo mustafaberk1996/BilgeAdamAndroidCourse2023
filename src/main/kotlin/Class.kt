@@ -1,8 +1,24 @@
-class User {
+class User() {
+    var id: Int = 0
     lateinit var name:String
     lateinit var surname:String
+    lateinit var email: String
+    lateinit var password: String
     var age:Int = -1
     var salary:Double = 0.0
+
+    constructor(id:Int, name:String, surname:String, email:String, password:String) : this(){
+        this.id = id
+        this.email = email
+        this.password = password
+        this.name = name
+        this.surname = surname
+    }
+
+
+    fun print(){
+        println("$id $name, $surname, $email, $password")
+    }
 }
 
 class Car{

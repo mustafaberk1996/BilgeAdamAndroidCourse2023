@@ -1,3 +1,5 @@
+import java.text.Collator
+import java.util.*
 
 fun main() {
     val input:String = "Merhaba Dunya"
@@ -8,7 +10,7 @@ fun main() {
     //count.findDoubleOrSingle()
     //findDoubleOrSingle1(count)
 
-    val fruits = listOf("Elma", "Armut", "Kiraz", "Muz", "Cilek", "Ananas", "Kivi", "Karpuz")
+    val fruits = listOf("Elma", "Armut", "Kiraz", "Muz", "çilek", "Ananas", "Kivi", "Karpuz")
     fruits.sortSpecial(false)
     fruits.sortSpecial(true)
 
@@ -26,11 +28,23 @@ fun Int.findDoubleOrSingle():Boolean = this % 2 == 0
 fun findDoubleOrSingle1(number:Int):Boolean = number % 2 == 0
 
 fun List<String>.sortSpecial(ascending:Boolean = true){
-    this.forEach { print("$it, ") }
+    val turkishComparator = compareBy<String>{ it.normalizeTurkishCharacters() }
+    val sortedList = if(ascending) this.sortedWith(turkishComparator)
+    else this.sortedWith(turkishComparator.reversed())
 
-    println("")
-    if (ascending) this.sorted().forEach { print("$it, ") }
-    else this.sortedDescending().forEach { print("$it, ") }
+    println(sortedList.joinToString(","))
+    // this.forEach { print("$it, ") }
 
-    println()
+    // val collator = Collator.getInstance(Locale("tr","TR"))
+
+    /*println("")
+    if (ascending) this.sortedWith(collator).forEach { print("$it, ") }
+    else this.sortedWith(collator).reversed().forEach { print("$it, ") }*/
+    //if (ascending) this.sorted().forEach { print("$it, ") }
+    //else this.sortedDescending().forEach { print("$it, ") }
+}
+
+fun String.normalizeTurkishCharacters():String {
+    return this.replace("ç","c")
+        .replace("Ç","C")
 }
