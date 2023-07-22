@@ -1,5 +1,6 @@
 package cinemaProject
 
+import java.time.LocalDate
 import java.util.*
 
 
@@ -16,13 +17,17 @@ fun main() {
     val saloonA = Saloon(1,"A",10,SaloonType.CINEMA,true)
     val saloonB = Saloon(2,"B",50,SaloonType.THEATRE)
 
-    val ticketA = Ticket(1, "Opphenheimer", 140.0, Date(), 1, saloonA, TicketType.STUDENT, userEmre)
-    val ticketB = Ticket(2, "Romeo & Julliet", 90.0, Date(), 2, saloonB, TicketType.VIP, userMeltem)
-    val ticketC = Ticket(3, "Opphenheimer", 140.0, Date(), 3, saloonA, TicketType.NORMAL, userDuygu)
-    val ticketD = Ticket(4, "Opphenheimer", 140.0, Date(), 5, saloonA, TicketType.DOCTOR, userOguz)
-    val ticketE = Ticket(5, "Opphenheimer", 140.0, Date(), 6, saloonA, TicketType.TEACHER, userHaluk)
-    val ticketF = Ticket(6, "Opphenheimer", 140.0, Date(), 3, saloonA, TicketType.NORMAL, userEmre)
+ 
+    val movie = Movie(1,"Opphenheimer",140.0,LocalDate.of(2023,7,21),Database.actors, duration = 135523234)
+    val theatre = Theatre(1, "Romeo & Julliet",100.0,LocalDate.of(2023,9,10),Database.actors, stageCount = 6)
 
+
+    val ticketA = Ticket(1,  1, saloonA, TicketType.STUDENT, userEmre, movie)
+    val ticketB = Ticket(2,  2, saloonB, TicketType.VIP, userMeltem, theatre)
+    val ticketC = Ticket(3,  3, saloonA, TicketType.NORMAL, userDuygu, movie)
+    val ticketD = Ticket(4,  5, saloonA, TicketType.DOCTOR, userOguz,movie)
+    val ticketE = Ticket(5,  6, saloonA, TicketType.TEACHER, userHaluk,movie)
+    val ticketF = Ticket(6,  3, saloonA, TicketType.NORMAL, userEmre,movie)
 
 
 }
